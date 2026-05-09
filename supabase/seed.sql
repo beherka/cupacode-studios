@@ -185,34 +185,7 @@ Vercel (frontend) + Railway (API). CDN Cloudflare.',
   true
 ),
 
--- ─────────────────────────────────────────────────────────────────────────────
--- 7. École-Adom — Site web (Cupacode Studios)
--- ─────────────────────────────────────────────────────────────────────────────
-(
-  'ecole-adom',
-  'École-Adom',
-  'Plateforme web pour un organisme de soutien scolaire à domicile (inscription, suivi, paiement).',
-  'École-Adom est un organisme de soutien scolaire à domicile. La plateforme gère l''ensemble du parcours client : prise de contact, matching élève/professeur, planning, suivi pédagogique et facturation.
-
-**Fonctionnalités :**
-- Portail parents : inscription, suivi des séances, messagerie
-- Portail enseignants : planning, feuilles d''émargement, ressources
-- Back-office admin : gestion des contrats, facturation, statistiques
-- Paiement en ligne sécurisé (Stripe)
-- Notifications automatiques SMS + email (Twilio + Resend)
-
-**Stack :**
-Next.js 14 + Supabase (auth, BDD, storage) + Stripe + Twilio. Déployé sur Vercel.
-
-**Impact :**
-Réduit le temps administratif de 70 % par rapport à la gestion Excel précédente.',
-  'website',
-  'cupacode-studios',
-  ARRAY['Next.js 14', 'Supabase', 'Stripe', 'Twilio', 'Resend', 'Tailwind CSS', 'Vercel'],
-  NULL,
-  ARRAY[]::TEXT[],
-  false
-),
+-- (écoles-Adom : version correcte en entrée 9 ci-dessous)
 
 -- ─────────────────────────────────────────────────────────────────────────────
 -- 8. Gel-Adom — Jeu mobile (Cupacode Studios)
@@ -238,6 +211,100 @@ Sélectionné par l''Académie de Bordeaux dans le cadre du programme "Numériqu
   'mobile_game',
   'cupacode-studios',
   ARRAY['Unity 2022', 'C#', 'Firebase', 'iOS', 'Android', 'App Store', 'Google Play'],
+  NULL,
+  ARRAY[]::TEXT[],
+  true
+),
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 9. Ecole-Adom — Site web (Cupacode Studios)
+-- ─────────────────────────────────────────────────────────────────────────────
+(
+  'ecole-adom',
+  'École-Adom',
+  'École en ligne pour enfants déscolarisés et expatriés, avec une pédagogie 100 % à la française.',
+  'École-Adom est une école en ligne conçue pour les enfants déscolarisés, en situation de handicap ou vivant à l''étranger, qui souhaitent conserver une approche pédagogique française conforme aux programmes de l''Éducation Nationale.
+
+**Concept :**
+Les élèves suivent leurs cours à distance via une plateforme dédiée, encadrés par des enseignants diplômés. L''ensemble du cursus du CP à la Terminale est couvert, avec un suivi individualisé de chaque élève.
+
+**Fonctionnalités :**
+- Espace élève : cours en ligne, devoirs, messagerie avec les enseignants
+- Espace parents : suivi des progressions, bulletins, facturation
+- Espace enseignants : préparation de cours, agenda, cahier de texte numérique
+- Visioconférences intégrées pour les cours en direct
+- Bibliothèque de ressources pédagogiques alignées sur les programmes français
+- Paiement en ligne sécurisé (Stripe)
+
+**Public cible :**
+Enfants déscolarisés pour raisons médicales, familles françaises expatriées, enfants en Instruction En Famille (IEF).
+
+**Stack :**
+Next.js 14 + Supabase + Stripe + Daily.co (visio). Déployé sur Vercel.',
+  'website',
+  'cupacode-studios',
+  ARRAY['Next.js 14', 'Supabase', 'Stripe', 'Daily.co', 'Tailwind CSS', 'Vercel'],
+  'https://ecole-adom.fr',
+  ARRAY[]::TEXT[],
+  false
+),
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 10. Geo-Adom — Jeu mobile (Cupacode Studios)
+-- ─────────────────────────────────────────────────────────────────────────────
+(
+  'geo-adom',
+  'Géo-Adom',
+  'Jeu mobile éducatif pour apprendre la géographie mondiale à travers les drapeaux des pays.',
+  'Géo-Adom est un jeu mobile éducatif qui transforme l''apprentissage de la géographie en défi ludique. Le joueur reconnaît et associe les drapeaux à leurs pays, progressant à travers des niveaux de difficulté croissante.
+
+**Mécaniques de jeu :**
+- Mode quiz : associer un drapeau à son pays parmi 4 propositions
+- Mode carte : localiser les pays sur une carte interactive
+- Classement mondial et entre amis
+- Plus de 195 pays couverts avec leurs drapeaux officiels
+- Progression débloquée par continent
+
+**Stack technique :**
+Unity 2022 + C#. Backend Firebase pour les scores et profils utilisateurs. Disponible sur App Store et Google Play.
+
+**Public cible :**
+Enfants et adolescents de 8 à 16 ans, utilisé en complément des cours de géographie.',
+  'mobile_game',
+  'cupacode-studios',
+  ARRAY['Unity 2022', 'C#', 'Firebase', 'iOS', 'Android'],
+  NULL,
+  ARRAY[]::TEXT[],
+  false
+),
+
+-- ─────────────────────────────────────────────────────────────────────────────
+-- 11. Adom-World — Jeu éducatif (Animal Crossing-like) pour École-Adom
+-- ─────────────────────────────────────────────────────────────────────────────
+(
+  'adom-world',
+  'Adom World',
+  'Jeu éducatif type Animal Crossing où les élèves évoluent dans un monde virtuel sécurisé tout en apprenant.',
+  'Adom World est un jeu éducatif développé pour École-Adom. Inspiré du concept Animal Crossing, les élèves incarnent leur propre avatar personnalisé et évoluent dans un monde virtuel bienveillant où chaque activité enseigne quelque chose : sécurité numérique, bonnes pratiques en ligne, collaboration et autonomie.
+
+**Concept :**
+Le monde Adom repose sur une carte ouverte avec des zones thématiques : la bibliothèque (culture générale), la salle de jeux (maths/logique), la nature (sciences), la place du village (sécurité numérique). Chaque zone propose des mini-jeux adaptés au niveau scolaire.
+
+**Fonctionnalités :**
+- Avatars personnalisables avec progression visible
+- Système de récompenses et de décorations pour la maison de l''avatar
+- Mode solo et mini-défis en groupe (classe entière)
+- Tableau de bord enseignant : suivi des progrès par élève
+- Contenu adapté du CP à la 3ème
+
+**Différenciation :**
+Contrairement aux jeux éducatifs classiques, Adom World mise sur l''immersion et la personnalisation de l''espace de l''élève pour créer un sentiment d''appartenance et de motivation durable.
+
+**Stack technique :**
+Unity 2022 LTS + C# + Photon (multijoueur temps réel) + Firebase (profils, progression). Application multiplateforme : iOS, Android, Web (WebGL).',
+  'mobile_game',
+  'cupacode-studios',
+  ARRAY['Unity 2022', 'C#', 'Photon', 'Firebase', 'iOS', 'Android', 'WebGL'],
   NULL,
   ARRAY[]::TEXT[],
   true
