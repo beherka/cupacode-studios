@@ -13,22 +13,25 @@ VALUES
 (
   'pulse-crisis',
   'Pulse-Crisis',
-  'Plateforme SaaS de gestion de crises en temps réel pour les équipes ASTREINTE et DSI.',
-  'Pulse-Crisis est une application web SaaS conçue pour centraliser la gestion d''incidents critiques au sein des organisations.
+  'Réseau social fermé propulsé par l''IA pour simuler et gérer les crises sur les réseaux sociaux.',
+  'Pulse-Crisis est un réseau social "fermé" alimenté par l''IA, conçu pour entraîner les équipes de communication, de crise et de gestion des risques à réagir face à une tempête médiatique sur les réseaux sociaux.
+
+**Concept :**
+L''IA génère un flux réaliste de posts, commentaires, partages et réactions simulant Twitter/X, LinkedIn ou Facebook en situation de crise (bad buzz, incident industriel, fuite de données, conflit RH…). L''équipe entraînée doit répondre, modérer et piloter la communication en temps réel dans un environnement 100 % fictif et sécurisé.
 
 **Fonctionnalités clés :**
-- Tableau de bord temps réel avec WebSockets
-- Système de tickets d''escalade multi-niveaux
-- Alertes SMS / email automatiques (intégration Twilio + Resend)
-- Chronologie interactive des incidents
-- Export PDF des post-mortems
-- Gestion des astreintes (rotations, calendrier)
+- Simulation de flux réseaux sociaux en temps réel par l''IA (Claude Sonnet)
+- Création de scénarios de crise paramétrables (secteur, ampleur, durée)
+- Personnages fictifs générés automatiquement avec des comportements distincts (journaliste, troll, client, élu…)
+- Tableau de bord d''analyse : sentiment, viralité, mentions clés
+- Debriefing automatique post-exercice avec scoring et recommandations
+- Modes solo (communication manager) et multi-joueurs (cellule de crise)
+
+**Cas d''usage :**
+Entraînement des cellules de crise, formations en école de communication, audits de résilience pour entreprises du CAC 40.
 
 **Architecture :**
-Le frontend est une SPA Next.js connectée à une API FastAPI. Les événements temps réel transitent par Supabase Realtime. Les fichiers sont stockés dans Supabase Storage.
-
-**Contexte :**
-Développé pour répondre aux besoins d''une DSI régionale gérant plusieurs établissements de santé. Déployé sur Vercel + Railway.',
+Next.js 14 + WebSockets (Supabase Realtime) + Anthropic Claude Sonnet (génération des profils et flux) + PostgreSQL.',
   'web_app',
   'cupacode-studios',
   ARRAY['Next.js 14', 'FastAPI', 'Supabase', 'WebSockets', 'Twilio', 'Tailwind CSS', 'PostgreSQL'],
@@ -43,26 +46,30 @@ Développé pour répondre aux besoins d''une DSI régionale gérant plusieurs �
 (
   'deal-trainer',
   'Deal Trainer',
-  'Simulateur de négociation commerciale IA pour former les équipes de vente B2B.',
-  'Deal Trainer est une plateforme d''entraînement à la vente alimentée par l''IA (Claude Sonnet). Les commerciaux s''exercent face à un acheteur virtuel réaliste avant leurs vraies négociations.
+  'Outil IA pour s''entraîner aux conversations de vente, accueil client et négociation commerciale.',
+  'Deal Trainer est une plateforme d''entraînement aux conversations professionnelles alimentée par l''IA. Commerciaux, chargés d''accueil, managers et équipes relation client s''exercent en conditions réelles face à un interlocuteur virtuel qui réagit, objecte et s''adapte.
+
+**Cas d''entraînement :**
+- Négociation commerciale et closing B2B / B2C
+- Accueil client et gestion des situations difficiles
+- Traitement des objections et réclamations
+- Entretiens de vente à distance (téléphone, visio)
+- Prise de rendez-vous à froid (cold call)
 
 **Fonctionnalités clés :**
-- Persona acheteur paramétrable (secteur, budget, objections types)
-- Sessions de roleplay conversationnel avec feedback immédiat
-- Scoring automatique : écoute active, argumentation, closing
-- Bibliothèque de scénarios (SaaS, industrie, immobilier…)
-- Tableau de bord manager avec progression par commercial
-- Mode live coaching (superviseur observe en temps réel)
+- Persona interlocuteur entièrement paramétrable (profil, ton, niveau d''exigence, objections types)
+- Dialogue en langage naturel piloté par Claude Sonnet
+- Scoring automatique en fin de session : écoute active, structure, closing, empathie
+- Bibliothèque de scénarios sectoriels (retail, B2B tech, banque, santé, hôtellerie…)
+- Historique des sessions et progression dans le temps
+- Mode manager : suivi de l''équipe et configuration des exercices
 
 **Architecture :**
-Next.js frontend, API Anthropic Claude Sonnet pour le dialogue, PostgreSQL pour l''historique des sessions, Redis pour les sessions actives.
-
-**Résultats clients :**
-+34 % de taux de closing observé sur 3 mois d''utilisation chez un client pilote.',
+Next.js 14 + Anthropic Claude Sonnet (dialogue IA) + PostgreSQL (historique) + Redis (sessions actives).',
   'web_app',
   'cupacode-studios',
   ARRAY['Next.js 14', 'Claude Sonnet', 'Anthropic SDK', 'Redis', 'PostgreSQL', 'Tailwind CSS'],
-  NULL,
+  'https://deal-trainer.com',
   ARRAY[]::TEXT[],
   true
 ),
@@ -73,22 +80,26 @@ Next.js frontend, API Anthropic Claude Sonnet pour le dialogue, PostgreSQL pour 
 (
   'analyse-conseil',
   'Analyse-Conseil',
-  'Plateforme de production de livrables pour cabinets de conseil IT (PSSI, EBIOS RM, rapports ITIL).',
-  'Analyse-Conseil est un outil SaaS destiné aux consultants IT. Il automatise la production de livrables professionnels (notes de cadrage, analyses de risques, rapports d''exploitation) grâce à l''IA.
+  'Outil IA pour aider les consultants à rédiger leurs livrables professionnels plus vite et mieux.',
+  'Analyse-Conseil est un assistant IA destiné aux consultants en stratégie, management et IT. Il accélère la production des livrables tout en maintenant un niveau de qualité élevé, aligné sur les référentiels métier.
+
+**Concept :**
+Le consultant décrit sa mission, ses observations et ses enjeux. L''IA génère les livrables structurés (note de cadrage, audit, rapport, plan d''action, présentation COMEX) en s''appuyant sur une base de connaissances enrichie (RAG) et les bonnes pratiques du secteur.
+
+**Livrables supportés :**
+- Avant-vente : note de cadrage, analyse de risques, proposition commerciale, chiffrage
+- Build : plan de projet (RACI inclus), compte-rendu, rapport d''avancement, registre des risques
+- Run : rapport d''exploitation, bilan de mission, plan d''amélioration continue
 
 **Fonctionnalités clés :**
-- Génération de livrables par type (avant-vente, build, run)
-- Analyse de risques EBIOS RM avec cartographie
-- RAG sur référentiels (ISO 27001, ITIL 4, RGPD)
-- Export PDF / Word / Excel des livrables
+- Génération structurée par type de livrable avec validation IA
+- RAG sur référentiels (ISO 27001, ITIL 4, RGPD, COBIT) via pgvector
+- Export PDF, Word et Excel des documents générés
 - Gestion multi-missions et multi-clients
-- Dashboard KPIs ITIL
+- Historique et versioning des livrables
 
 **Architecture :**
-FastAPI + Next.js 14 + PostgreSQL + pgvector (RAG) + MinIO (stockage fichiers) + Celery (tâches asynchrones). Anthropic Claude Sonnet pour la génération.
-
-**Stack complète :**
-Déployé via Docker Compose, scalable sur Kubernetes.',
+FastAPI + Next.js 14 + PostgreSQL + pgvector + Anthropic Claude Sonnet + MinIO (fichiers) + Celery.',
   'web_app',
   'cupacode-studios',
   ARRAY['Next.js 14', 'FastAPI', 'PostgreSQL', 'pgvector', 'Claude Sonnet', 'MinIO', 'Celery', 'Redis', 'Docker'],
@@ -103,22 +114,26 @@ Déployé via Docker Compose, scalable sur Kubernetes.',
 (
   'dsi-management',
   'DSI-Management',
-  'Outil de pilotage stratégique pour Directeurs des Systèmes d''Information (indicateurs, roadmaps, gouvernance).',
-  'DSI-Management est une plateforme de pilotage conçue pour les DSI et RSSI. Elle centralise les indicateurs de performance IT, les roadmaps projets et les éléments de gouvernance.
+  'Outil de management complet pour piloter une Direction des Systèmes d''Information au quotidien.',
+  'DSI-Management est une plateforme pensée pour les DSI, RSSI et responsables informatiques qui veulent centraliser le pilotage de leur SI dans un seul outil structuré.
+
+**Concept :**
+Plutôt qu''un simple tableau de bord, DSI-Management couvre l''ensemble du management IT : de la stratégie à l''opérationnel, en passant par la gouvernance, les ressources humaines, les contrats et la sécurité.
 
 **Fonctionnalités clés :**
-- Tableau de bord COBIT / ITIL avec KPIs personnalisables
-- Gestionnaire de roadmap avec dépendances Gantt
-- Module RGPD : registre des traitements, DCP, incidents
-- Gestion du budget IT et des contrats fournisseurs
-- Rapports automatisés pour CODIR / COMEX
-- Gestion des utilisateurs et des périmètres SI
-
-**Architecture :**
-Monorepo Next.js + API Routes. Données en PostgreSQL (Supabase). Graphiques via Recharts. Authentification SSO SAML.
+- Pilotage des projets IT : roadmap, jalons, RACI, suivi d''avancement
+- Gestion des ressources : équipes, compétences, prestataires, contrats
+- Suivi budgétaire IT : CAPEX / OPEX, engagements, réalisé vs prévisionnel
+- Tableau de bord sécurité : incidents, vulnérabilités, conformité RGPD / NIS2
+- Reporting automatisé pour CODIR, COMEX et conseil d''administration
+- Base de connaissance interne : procédures, SLA, catalogue de services
+- Gestion des actifs informatiques (matériels, licences, fin de vie)
 
 **Public cible :**
-DSI de PME/ETI (50–500 salariés), collectivités territoriales, établissements de santé.',
+DSI de PME/ETI (50–500 salariés), responsables informatiques de collectivités territoriales et d''établissements de santé.
+
+**Architecture :**
+Next.js 14 monorepo + Supabase (auth, BDD, storage) + Recharts (graphiques) + PDF export.',
   'web_app',
   'cupacode-studios',
   ARRAY['Next.js 14', 'Supabase', 'PostgreSQL', 'Recharts', 'Tailwind CSS', 'TypeScript'],
