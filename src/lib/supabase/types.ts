@@ -58,7 +58,7 @@ export type ProjectInsert = Omit<Project, 'id' | 'created_at' | 'updated_at'>;
 export type ProjectUpdate = Partial<ProjectInsert>;
 
 // =====================================================
-// Type Database (structure Supabase)
+// Type Database (structure complète attendue par @supabase/supabase-js)
 // =====================================================
 export interface Database {
   public: {
@@ -67,8 +67,12 @@ export interface Database {
         Row:    Project;
         Insert: ProjectInsert;
         Update: ProjectUpdate;
+        Relationships: [];
       };
     };
+    Views:          Record<string, never>;
+    Functions:      Record<string, never>;
+    CompositeTypes: Record<string, never>;
     Enums: {
       project_category: ProjectCategory;
       project_brand:    ProjectBrand;

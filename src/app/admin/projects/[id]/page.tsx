@@ -33,15 +33,18 @@ export default async function EditProjectPage({ params }: Props) {
 
   if (error || !project) notFound();
 
+  // Cast explicite : TypeScript ne déduit pas que notFound() est un never
+  const safeProject = project as Project;
+
   return (
     <div className="section">
       <div className="container-page max-w-2xl">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">Modifier le projet</h1>
         <p className="text-sm text-gray-500 mb-8">
-          Slug : <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">{project.slug}</code>
+          Slug : <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">{safeProject.slug}</code>
         </p>
         {/* Formulaire en mode édition avec le projet existant */}
-        <ProjectForm mode="edit" project={project as Project} />
+        <ProjectForm mode="edit" project={safeProject} />
       </div>
     </div>
   );

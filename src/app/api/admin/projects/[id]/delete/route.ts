@@ -27,8 +27,9 @@ export async function POST(_req: Request, { params }: Params) {
     .single();
 
   // Suppression des screenshots dans Storage si présents
-  if (project?.screenshots?.length) {
-    await supabase.storage.from('project-screenshots').remove(project.screenshots);
+  const screenshots = (project as { screenshots?: string[] } | null)?.screenshots;
+  if (screenshots?.length) {
+    await supabase.storage.from('project-screenshots').remove(screenshots);
   }
 
   // Suppression du projet en base

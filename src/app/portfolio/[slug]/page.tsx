@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ExternalLink, ArrowLeft, Lock, Calendar } from 'lucide-react';
-import { createClient } from '@/lib/supabase/server';
+import { createClient, createStaticClient } from '@/lib/supabase/server';
 import { BrandBadge } from '@/components/BrandBadge';
 import { TechStackList } from '@/components/TechStackList';
 import { ScreenshotGallery } from '@/components/ScreenshotGallery';
@@ -20,7 +20,8 @@ interface Props {
 
 // Génération des slugs statiques au build (SSG)
 export async function generateStaticParams() {
-  const supabase = await createClient();
+  // createStaticClient : pas de cookies, fonctionne au build time
+  const supabase = createStaticClient();
   const { data } = await supabase.from('projects').select('slug');
   return (data ?? []).map((p) => ({ slug: p.slug }));
 }

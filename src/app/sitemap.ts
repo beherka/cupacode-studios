@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { createClient } from '@/lib/supabase/server';
+import { createStaticClient } from '@/lib/supabase/server';
 
 // =====================================================
 // Sitemap dynamique — /sitemap.xml
@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ];
 
   // Pages dynamiques : une URL par projet
-  const supabase = await createClient();
+  const supabase = createStaticClient();
   const { data: projects } = await supabase.from('projects').select('slug, updated_at');
 
   const projectPages: MetadataRoute.Sitemap = (projects ?? []).map((p) => ({
