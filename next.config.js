@@ -1,12 +1,12 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Activation du mode strict React
   reactStrictMode: true,
 
   images: {
     remotePatterns: [
       {
-        // Autorise les images hébergées dans Supabase Storage
         protocol: 'https',
         hostname: '*.supabase.co',
         port: '',
@@ -15,7 +15,12 @@ const nextConfig = {
     ],
   },
 
-  // En-têtes de sécurité HTTP
+  // Alias @/ → src/ explicite pour webpack (indépendant du tsconfig.json)
+  webpack(config) {
+    config.resolve.alias['@'] = path.resolve(__dirname, 'src');
+    return config;
+  },
+
   async headers() {
     return [
       {
