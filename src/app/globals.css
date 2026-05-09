@@ -12,7 +12,8 @@
   html { scroll-behavior: smooth; }
 
   body {
-    @apply bg-[#080b10] text-gray-100 antialiased;
+    @apply text-gray-100 antialiased;
+    background-color: #080b10;
     font-family: var(--font-sans);
   }
 
@@ -38,29 +39,39 @@
   /* Bouton CUPADEV — cyan glow */
   .btn-cupadev {
     @apply inline-flex items-center gap-2 rounded px-5 py-2.5 text-sm font-mono font-semibold
-           bg-cupadev-400 text-[#080b10] hover:bg-cupadev-300
-           border border-cupadev-400/80
-           transition-all duration-150
-           shadow-[0_0_16px_rgba(34,211,238,0.3)]
-           hover:shadow-[0_0_24px_rgba(34,211,238,0.55)];
+           bg-cupadev-400 hover:bg-cupadev-300
+           border transition-all duration-150;
+    color: #080b10;
+    border-color: rgba(34, 211, 238, 0.8);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.3);
+  }
+  .btn-cupadev:hover {
+    box-shadow: 0 0 24px rgba(34, 211, 238, 0.55);
   }
 
   /* Bouton Studios — vert glow */
   .btn-studios {
     @apply inline-flex items-center gap-2 rounded px-5 py-2.5 text-sm font-mono font-semibold
-           bg-studios-500 text-[#080b10] hover:bg-studios-400
-           border border-studios-500/80
-           transition-all duration-150
-           shadow-[0_0_16px_rgba(34,197,94,0.3)]
-           hover:shadow-[0_0_24px_rgba(34,197,94,0.55)];
+           bg-studios-500 hover:bg-studios-400
+           border transition-all duration-150;
+    color: #080b10;
+    border-color: rgba(34, 197, 94, 0.8);
+    box-shadow: 0 0 16px rgba(34, 197, 94, 0.3);
+  }
+  .btn-studios:hover {
+    box-shadow: 0 0 24px rgba(34, 197, 94, 0.55);
   }
 
   /* Bouton ghost */
   .btn-outline {
     @apply inline-flex items-center gap-2 rounded px-5 py-2.5 text-sm font-mono font-medium
-           border border-[#30363d] text-gray-400 bg-transparent
-           hover:border-cupadev-400 hover:text-cupadev-400
+           text-gray-400 bg-transparent
+           hover:text-cupadev-400
            transition-colors duration-150;
+    border: 1px solid #30363d;
+  }
+  .btn-outline:hover {
+    border-color: #22d3ee;
   }
 
   .container-page { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
@@ -68,8 +79,8 @@
 
   /* Badge terminal (prompt-like) */
   .terminal-badge {
-    @apply inline-flex items-center gap-1.5 font-mono text-xs
-           bg-[#0d1117] border border-[#30363d] text-cupadev-400
-           px-3 py-1 rounded;
+    @apply inline-flex items-center gap-1.5 font-mono text-xs text-cupadev-400 px-3 py-1 rounded;
+    background-color: #0d1117;
+    border: 1px solid #30363d;
   }
 }
