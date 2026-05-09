@@ -6,8 +6,10 @@ import { ProjectCard } from '@/components/ProjectCard';
 import type { Project } from '@/lib/supabase/types';
 
 export const metadata: Metadata = {
-  title: 'Cupacode Studios — Dev Studio & CUPADEV CI/CD',
-  description: 'Studio de développement applications web SaaS, jeux mobiles et CI/CD managé.',
+  title: 'Cupacode Studios — Studio de développement web & mobile en France',
+  description:
+    'Studio de développement web en France. Nous créons des applications SaaS, sites vitrines, jeux mobiles iOS/Android et gérons votre CI/CD. Devis gratuit.',
+  alternates: { canonical: 'https://cupacode-studios.com' },
 };
 
 export const revalidate = 3600;
@@ -23,8 +25,29 @@ export default async function HomePage() {
 
   const projects = (featuredProjects ?? []) as Project[];
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Cupacode Studios',
+    url: 'https://cupacode-studios.com',
+    logo: 'https://cupacode-studios.com/logo.png',
+    description: 'Studio de développement web et mobile basé en France. Applications SaaS, jeux mobiles et CI/CD managé.',
+    email: 'contact@cupacode-studios.com',
+    areaServed: 'FR',
+    knowsLanguage: 'fr',
+    sameAs: ['https://cupadev.com'],
+    offers: {
+      '@type': 'Offer',
+      description: 'Développement web SaaS, jeux mobiles iOS/Android, CI/CD managé',
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ── HERO ─────────────────────────────────────────────── */}
       <section className="relative section overflow-hidden">
         {/* Grille de fond */}

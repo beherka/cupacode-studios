@@ -22,7 +22,8 @@ export default async function NewProjectPage() {
   return (
     <div className="section">
       <div className="container-page max-w-2xl">
-        <h1 className="text-2xl font-bold text-gray-900 mb-8">Nouveau projet</h1>
+        <p className="font-mono text-xs text-gray-500 mb-1">&gt;_ admin</p>
+        <h1 className="text-xl font-bold text-gray-100 mb-8">Nouveau projet</h1>
         {/* Formulaire en mode création (pas de projet initial) */}
         <ProjectForm mode="create" />
       </div>

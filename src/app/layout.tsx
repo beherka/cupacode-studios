@@ -5,12 +5,39 @@ import './globals.css';
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cupacode-studios.com'),
   title: {
-    default: 'Cupacode Studios — Dev Studio & CUPADEV CI/CD',
+    default: 'Cupacode Studios — Studio de développement web & mobile en France',
     template: '%s | Cupacode Studios',
   },
-  description: 'Studio de développement web SaaS, jeux mobiles et infrastructure CI/CD managée.',
-  openGraph: { type: 'website', locale: 'fr_FR', siteName: 'Cupacode Studios' },
-  robots: { index: true, follow: true },
+  description:
+    'Studio de développement web basé en France. Applications SaaS, sites vitrines, jeux mobiles iOS/Android et CI/CD managé. TypeScript, Next.js, React Native.',
+  keywords: [
+    'studio développement web France',
+    'agence web SaaS France',
+    'développement application web',
+    'développement application mobile France',
+    'jeux mobiles iOS Android',
+    'Next.js TypeScript France',
+    'agence développement logiciel',
+    'développeur web France',
+  ],
+  authors:   [{ name: 'Cupacode Studios', url: 'https://cupacode-studios.com' }],
+  creator:   'Cupacode Studios',
+  publisher: 'Cupacode Studios',
+  openGraph: {
+    type:        'website',
+    locale:      'fr_FR',
+    siteName:    'Cupacode Studios',
+    url:         'https://cupacode-studios.com',
+    title:       'Cupacode Studios — Studio de développement web & mobile en France',
+    description: 'Applications SaaS, jeux mobiles et CI/CD managé. Studio dev français.',
+  },
+  twitter: {
+    card:        'summary_large_image',
+    title:       'Cupacode Studios — Studio dev France',
+    description: 'Applications SaaS, jeux mobiles et CI/CD managé. Studio dev français.',
+  },
+  robots:     { index: true, follow: true },
+  alternates: { canonical: 'https://cupacode-studios.com' },
 };
 
 function Header() {

@@ -4,8 +4,10 @@ import { PortfolioClient } from './PortfolioClient';
 import type { Project } from '@/lib/supabase/types';
 
 export const metadata: Metadata = {
-  title: 'Portfolio',
-  description: 'Applications web SaaS, sites vitrines, jeux mobiles et projets CI/CD.',
+  title: 'Portfolio — Nos réalisations web & mobile',
+  description:
+    'Découvrez les projets de Cupacode Studios : applications SaaS, jeux mobiles iOS/Android, plateformes IA et outils métier développés en France.',
+  alternates: { canonical: 'https://cupacode-studios.com/portfolio' },
 };
 
 export const revalidate = 3600;

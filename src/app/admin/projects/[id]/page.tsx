@@ -39,10 +39,9 @@ export default async function EditProjectPage({ params }: Props) {
   return (
     <div className="section">
       <div className="container-page max-w-2xl">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">Modifier le projet</h1>
-        <p className="text-sm text-gray-500 mb-8">
-          Slug : <code className="font-mono bg-gray-100 px-1.5 py-0.5 rounded">{safeProject.slug}</code>
-        </p>
+        <p className="font-mono text-xs text-gray-500 mb-1">&gt;_ admin</p>
+        <h1 className="text-xl font-bold text-gray-100 mb-2">Modifier le projet</h1>
+        <p className="text-xs font-mono text-gray-500 mb-8">slug: {safeProject.slug}</p>
         {/* Formulaire en mode édition avec le projet existant */}
         <ProjectForm mode="edit" project={safeProject} />
       </div>
