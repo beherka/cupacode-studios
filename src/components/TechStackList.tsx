@@ -1,12 +1,7 @@
-// =====================================================
-// TechStackList — Liste des technologies d'un projet
-// =====================================================
-
 import { cn } from '@/lib/utils';
 
 interface TechStackListProps {
   techs: string[];
-  /** Nombre maximum de tags à afficher (le reste est masqué avec "+N") */
   maxVisible?: number;
   className?: string;
 }
@@ -16,22 +11,17 @@ export function TechStackList({ techs, maxVisible, className }: TechStackListPro
   const hidden  = maxVisible ? techs.length - maxVisible : 0;
 
   return (
-    <ul
-      className={cn('flex flex-wrap gap-1.5', className)}
-      aria-label="Technologies utilisées"
-    >
+    <ul className={cn('flex flex-wrap gap-1', className)}>
       {visible.map((tech) => (
         <li key={tech}>
-          <span className="inline-block text-xs font-mono font-medium px-2 py-0.5 rounded-md bg-gray-100 text-gray-700 border border-gray-200 dark:bg-gray-800 dark:text-gray-300 dark:border-gray-700">
+          <span className="inline-block font-mono text-xs px-1.5 py-0.5 rounded bg-[#161b22] border border-[#30363d] text-gray-500">
             {tech}
           </span>
         </li>
       ))}
-
-      {/* Badge "+N" si des technologies sont masquées */}
       {hidden > 0 && (
         <li>
-          <span className="inline-block text-xs font-mono font-medium px-2 py-0.5 rounded-md bg-gray-200 text-gray-500 dark:bg-gray-700 dark:text-gray-400">
+          <span className="inline-block font-mono text-xs px-1.5 py-0.5 rounded bg-[#161b22] border border-[#30363d] text-gray-700">
             +{hidden}
           </span>
         </li>

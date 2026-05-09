@@ -1,7 +1,3 @@
-// =====================================================
-// ProjectCard — Carte projet pour la page portfolio
-// =====================================================
-
 import Link from 'next/link';
 import Image from 'next/image';
 import { ExternalLink, Lock } from 'lucide-react';
@@ -18,101 +14,73 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project, className }: ProjectCardProps) {
-  // Bordure colorée selon la marque (différenciation visuelle)
-  const brandAccent: Record<string, string> = {
-    'cupadev':          'border-t-cupadev-500',
+  const brandAccentClass: Record<string, string> = {
+    'cupadev':          'border-t-cupadev-400',
     'cupacode-studios': 'border-t-studios-500',
   };
 
   return (
-    <article
-      className={cn(
-        'group relative flex flex-col rounded-xl border border-gray-200 bg-white shadow-sm',
-        'hover:shadow-md transition-shadow duration-200',
-        'border-t-4',
-        brandAccent[project.brand] ?? 'border-t-gray-300',
-        'dark:bg-gray-900 dark:border-gray-700',
-        className
-      )}
-    >
-      {/* Vignette screenshot ou placeholder */}
-      <div className="relative h-44 overflow-hidden rounded-t-lg bg-gray-100 dark:bg-gray-800">
+    <article className={cn(
+      'group flex flex-col rounded-lg border border-[#21262d] bg-[#0d1117]',
+      'hover:border-[#30363d] transition-colors duration-200',
+      'border-t-2',
+      brandAccentClass[project.brand] ?? 'border-t-[#30363d]',
+      className
+    )}>
+      {/* Vignette */}
+      <div className="relative h-40 overflow-hidden rounded-t-md bg-[#161b22]">
         {project.screenshots.length > 0 ? (
           <Image
             src={getStorageUrl(project.screenshots[0])}
-            alt={`Capture d'écran de ${project.title}`}
+            alt={`Capture de ${project.title}`}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-300 group-hover:scale-105 opacity-80 group-hover:opacity-100"
+            sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
-          // Placeholder avec initiales du projet
           <div className="flex h-full items-center justify-center">
-            <span className="text-5xl font-bold text-gray-300 dark:text-gray-600 select-none">
-              {project.title.charAt(0)}
+            <span className="font-mono text-4xl font-bold text-[#30363d] select-none">
+              {project.title.charAt(0).toUpperCase()}
             </span>
           </div>
         )}
-
-        {/* Badge "Featured" */}
         {project.featured && (
           <div className="absolute top-2 right-2">
-            <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-200">
-              En vedette
+            <span className="font-mono text-xs px-2 py-0.5 rounded bg-[#0d1117] border border-[#30363d] text-cupadev-400">
+              ★ featured
             </span>
           </div>
         )}
       </div>
 
-      {/* Contenu textuel */}
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        {/* En-tête : marque + catégorie */}
+      {/* Contenu */}
+      <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="flex items-center justify-between gap-2 flex-wrap">
           <BrandBadge brand={project.brand} size="sm" />
-          <span className="text-xs text-gray-500 dark:text-gray-400">
-            {CATEGORY_LABELS[project.category]}
-          </span>
+          <span className="font-mono text-xs text-gray-600">{CATEGORY_LABELS[project.category]}</span>
         </div>
 
-        {/* Titre */}
-        <h3 className="text-lg font-bold text-gray-900 dark:text-white leading-snug">
-          {project.title}
-        </h3>
+        <h3 className="font-mono text-base font-bold text-gray-100">{project.title}</h3>
 
-        {/* Description courte */}
-        <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 flex-1">
+        <p className="text-xs text-gray-500 line-clamp-3 flex-1 leading-relaxed">
           {project.description_short}
         </p>
 
-        {/* Stack technique */}
         <TechStackList techs={project.tech_stack} maxVisible={4} />
 
-        {/* Actions */}
-        <div className="mt-auto flex items-center justify-between gap-3 pt-2 border-t border-gray-100 dark:border-gray-800">
-          {/* Lien vers la fiche détaillée */}
-          <Link
-            href={`/portfolio/${project.slug}`}
-            className="text-sm font-medium text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors"
-          >
-            Voir la fiche →
+        <div className="mt-auto flex items-center justify-between gap-3 pt-3 border-t border-[#21262d]">
+          <Link href={`/portfolio/${project.slug}`}
+            className="font-mono text-xs text-gray-500 hover:text-cupadev-400 transition-colors">
+            ./voir-fiche →
           </Link>
-
-          {/* Lien externe si disponible */}
           {project.external_url ? (
-            <a
-              href={project.external_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-xs text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors"
-              aria-label={`Ouvrir ${project.title} (nouvel onglet)`}
-            >
-              <ExternalLink size={13} />
-              Site live
+            <a href={project.external_url} target="_blank" rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-mono text-xs text-gray-600 hover:text-studios-400 transition-colors">
+              <ExternalLink size={11} /> live ↗
             </a>
           ) : (
-            <span className="inline-flex items-center gap-1 text-xs text-gray-400 dark:text-gray-600">
-              <Lock size={13} />
-              Projet privé
+            <span className="inline-flex items-center gap-1 font-mono text-xs text-gray-700">
+              <Lock size={11} /> private
             </span>
           )}
         </div>

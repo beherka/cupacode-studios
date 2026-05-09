@@ -1,25 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Code2, Gamepad2, Server, Zap } from 'lucide-react';
+import { ArrowRight, Terminal, Cpu, Gamepad2, GitBranch } from 'lucide-react';
 import { createClient } from '@/lib/supabase/server';
 import { ProjectCard } from '@/components/ProjectCard';
 import type { Project } from '@/lib/supabase/types';
 
-// =====================================================
-// Page d'accueil — présentation des deux pôles
-// =====================================================
-
 export const metadata: Metadata = {
-  title: 'Cupacode Studios — Studio de développement web & jeux mobiles',
-  description:
-    'Cupacode Studios conçoit des applications web SaaS haute performance et des jeux mobiles innovants. Découvrez CUPADEV, notre service CI/CD DevOps.',
+  title: 'Cupacode Studios — Dev Studio & CUPADEV CI/CD',
+  description: 'Studio de développement applications web SaaS, jeux mobiles et CI/CD managé.',
 };
 
-// Rechargement statique toutes les heures (ISR)
 export const revalidate = 3600;
 
 export default async function HomePage() {
-  // Récupération des projets mis en avant (featured = true)
   const supabase = await createClient();
   const { data: featuredProjects } = await supabase
     .from('projects')
@@ -28,179 +21,171 @@ export default async function HomePage() {
     .order('created_at', { ascending: false })
     .limit(3);
 
-  const projects: Project[] = featuredProjects ?? [];
+  const projects = (featuredProjects ?? []) as Project[];
 
   return (
     <>
-      {/* ─── HERO ─────────────────────────────────────────────── */}
-      <section className="section bg-gradient-to-br from-gray-50 via-white to-studios-50/30">
-        <div className="container-page text-center">
-          {/* Badge d'introduction */}
-          <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-studios-600 bg-studios-50 border border-studios-200 px-3 py-1.5 rounded-full mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-studios-500 animate-pulse" />
-            Studio de développement
+      {/* ── HERO ─────────────────────────────────────────────── */}
+      <section className="relative section overflow-hidden">
+        {/* Grille de fond */}
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(34,211,238,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(34,211,238,0.03)_1px,transparent_1px)] bg-[size:40px_40px]" />
+        {/* Glow radial */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cupadev-400/5 rounded-full blur-3xl" />
+
+        <div className="container-page relative text-center">
+          {/* Prompt terminal */}
+          <div className="terminal-badge mb-8 mx-auto w-fit">
+            <span className="text-studios-400">$</span>
+            <span className="text-gray-300">whoami</span>
+            <span className="inline-block w-2 h-3.5 bg-cupadev-400 ml-0.5 animate-[blink_1s_step-end_infinite]" />
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-            Nous construisons des{' '}
-            <span className="text-studios-600">apps qui comptent</span>
-            <br />
-            et des{' '}
-            <span className="text-cupadev-600">infras qui tiennent</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-mono font-bold text-gray-100 leading-[1.1] mb-6">
+            <span className="text-cupadev-400">&gt;_</span> We build<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cupadev-400 to-studios-400">
+              software that ships.
+            </span>
           </h1>
 
-          <p className="mx-auto max-w-2xl text-lg text-gray-600 mb-10">
-            De l&apos;idée au déploiement : applications web SaaS, jeux mobiles engageants,
-            et infrastructure CI/CD haute disponibilité.
+          <p className="mx-auto max-w-xl text-base text-gray-400 font-mono mb-10 leading-relaxed">
+            <span className="text-gray-600">//</span> Apps web SaaS · Jeux mobiles · CI/CD managé<br />
+            <span className="text-gray-600">//</span> TypeScript · Next.js · Supabase · DevOps
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/portfolio" className="btn-studios">
-              Voir nos réalisations
-              <ArrowRight size={16} />
+            <Link href="/portfolio" className="btn-cupadev">
+              ./portfolio <ArrowRight size={14} />
             </Link>
-            <Link href="/cupadev" className="btn-outline">
-              Découvrir CUPADEV
-            </Link>
+            <a href="https://cupadev.com" target="_blank" rel="noopener noreferrer"
+              className="btn-outline">
+              cupadev.com ↗
+            </a>
           </div>
         </div>
       </section>
 
-      {/* ─── DEUX PÔLES ───────────────────────────────────────── */}
-      <section className="section bg-white">
+      {/* ── DEUX PÔLES ───────────────────────────────────────── */}
+      <section className="section border-t border-[#21262d]">
         <div className="container-page">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-4">
-            Deux pôles d&apos;expertise, une seule équipe
-          </h2>
-          <p className="text-center text-gray-500 mb-12 max-w-xl mx-auto">
-            Chaque marque répond à un besoin précis, avec une identité et des compétences distinctes.
+          <p className="font-mono text-xs text-gray-600 uppercase tracking-widest mb-10 text-center">
+            # deux pôles, une équipe
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Carte Cupacode Studios */}
-            <div className="relative overflow-hidden rounded-2xl border-2 border-studios-200 bg-gradient-to-br from-studios-50 to-white p-8">
-              {/* Décoration */}
-              <div className="absolute top-0 right-0 w-32 h-32 bg-studios-100 rounded-full -translate-y-16 translate-x-16 opacity-50" />
-
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Cupacode Studios */}
+            <div className="relative p-6 rounded-lg border border-[#21262d] bg-[#0d1117] hover:border-studios-500/40 transition-colors group overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-studios-500/5 rounded-full blur-3xl" />
               <div className="relative">
-                <div className="inline-flex p-3 rounded-xl bg-studios-100 text-studios-700 mb-5">
-                  <Code2 size={24} />
+                <div className="flex items-center gap-2 mb-5">
+                  <Terminal size={18} className="text-studios-400" />
+                  <span className="font-mono text-xs text-gray-500">~/cupacode-studios</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Cupacode Studios</h3>
-                <p className="text-studios-700 font-medium text-sm mb-4">cupacode-studios.com</p>
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                  Studio de développement d&apos;applications web SaaS et de jeux mobiles.
-                  De la maquette Figma au lancement en production, nous couvrons l&apos;ensemble du cycle.
+                <h2 className="font-mono text-xl font-bold text-gray-100 mb-2">Cupacode Studios</h2>
+                <p className="font-mono text-xs text-studios-400 mb-4">cupacode-studios.com</p>
+                <p className="text-sm text-gray-400 mb-5 leading-relaxed">
+                  Dev studio spécialisé applications web SaaS et jeux mobiles.
+                  De la conception au déploiement en production.
                 </p>
-                <ul className="space-y-2 mb-6">
-                  {['Applications web & SaaS', 'Sites vitrines & e-commerce', 'Jeux mobiles iOS & Android', 'Intégration IA (Claude, GPT)'].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                      <span className="w-1.5 h-1.5 rounded-full bg-studios-500 shrink-0" />
-                      {item}
+                <ul className="space-y-1.5 mb-6">
+                  {['Applications web & SaaS', 'Sites vitrines', 'Jeux mobiles iOS/Android', 'Intégration IA'].map((item) => (
+                    <li key={item} className="flex items-center gap-2 font-mono text-xs text-gray-400">
+                      <span className="text-studios-400">+</span> {item}
                     </li>
                   ))}
                 </ul>
-                <Link href="/portfolio" className="btn-studios text-sm">
-                  Voir le portfolio <ArrowRight size={14} />
+                <Link href="/portfolio" className="btn-studios text-xs py-1.5 px-3">
+                  ./voir-les-projets <ArrowRight size={12} />
                 </Link>
               </div>
             </div>
 
-            {/* Carte CUPADEV */}
-            <div className="relative overflow-hidden rounded-2xl border-2 border-cupadev-200 bg-gradient-to-br from-cupadev-50 to-white p-8">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-cupadev-100 rounded-full -translate-y-16 translate-x-16 opacity-50" />
-
+            {/* CUPADEV */}
+            <div className="relative p-6 rounded-lg border border-[#21262d] bg-[#0d1117] hover:border-cupadev-400/40 transition-colors group overflow-hidden">
+              <div className="absolute top-0 right-0 w-48 h-48 bg-cupadev-400/5 rounded-full blur-3xl" />
               <div className="relative">
-                <div className="inline-flex p-3 rounded-xl bg-cupadev-100 text-cupadev-700 mb-5">
-                  <Server size={24} />
+                <div className="flex items-center gap-2 mb-5">
+                  <GitBranch size={18} className="text-cupadev-400" />
+                  <span className="font-mono text-xs text-gray-500">~/cupadev</span>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">CUPADEV</h3>
-                <p className="text-cupadev-700 font-medium text-sm mb-4">cupadev.com</p>
-                <p className="text-gray-600 text-sm mb-6 leading-relaxed">
-                  Service d&apos;hébergement et de CI/CD managé pour développeurs et startups.
-                  Déployez en quelques minutes sur une infra fiable et scalable.
+                <h2 className="font-mono text-xl font-bold text-gray-100 mb-2">CUPADEV</h2>
+                <p className="font-mono text-xs text-cupadev-400 mb-4">cupadev.com</p>
+                <p className="text-sm text-gray-400 mb-5 leading-relaxed">
+                  Hébergement et CI/CD managé pour développeurs et startups.
+                  Déployez vite, sur une infra fiable et scalable.
                 </p>
-                <ul className="space-y-2 mb-6">
-                  {['Pipelines CI/CD automatisés', 'Hébergement conteneurisé', 'Monitoring & alertes', 'Infrastructure as Code'].map((item) => (
-                    <li key={item} className="flex items-center gap-2 text-sm text-gray-700">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cupadev-500 shrink-0" />
-                      {item}
+                <ul className="space-y-1.5 mb-6">
+                  {['Pipelines CI/CD automatisés', 'Hébergement conteneurisé', 'Monitoring & alertes 24/7', 'Infrastructure as Code'].map((item) => (
+                    <li key={item} className="flex items-center gap-2 font-mono text-xs text-gray-400">
+                      <span className="text-cupadev-400">+</span> {item}
                     </li>
                   ))}
                 </ul>
-                <Link href="/cupadev" className="btn-cupadev text-sm">
-                  En savoir plus <ArrowRight size={14} />
-                </Link>
+                <a href="https://cupadev.com" target="_blank" rel="noopener noreferrer"
+                  className="btn-cupadev text-xs py-1.5 px-3">
+                  ./cupadev.com ↗ <ArrowRight size={12} />
+                </a>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── CHIFFRES CLÉS ────────────────────────────────────── */}
-      <section className="py-14 bg-gray-950 text-white">
+      {/* ── STATS ────────────────────────────────────────────── */}
+      <section className="py-12 border-t border-[#21262d] bg-[#0d1117]">
         <div className="container-page">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
-              { value: '8+', label: 'Projets livrés', icon: <Zap size={20} /> },
-              { value: '5', label: 'Secteurs couverts', icon: <Code2 size={20} /> },
-              { value: '100%', label: 'TypeScript strict', icon: <Server size={20} /> },
-              { value: '< 24h', label: 'Temps de réponse', icon: <Gamepad2 size={20} /> },
-            ].map((stat) => (
-              <div key={stat.label} className="flex flex-col items-center gap-2">
-                <div className="text-studios-400">{stat.icon}</div>
-                <p className="text-3xl font-bold">{stat.value}</p>
-                <p className="text-sm text-gray-400">{stat.label}</p>
+              { value: '8+',    label: 'projects shipped',  icon: <Cpu size={16} className="text-cupadev-400" /> },
+              { value: '100%',  label: 'TypeScript strict', icon: <Terminal size={16} className="text-studios-400" /> },
+              { value: '< 24h', label: 'response time',     icon: <GitBranch size={16} className="text-cupadev-400" /> },
+              { value: '5+',    label: 'sectors covered',   icon: <Gamepad2 size={16} className="text-studios-400" /> },
+            ].map((s) => (
+              <div key={s.label} className="flex flex-col items-center gap-1">
+                {s.icon}
+                <p className="font-mono text-2xl font-bold text-gray-100">{s.value}</p>
+                <p className="font-mono text-xs text-gray-600"># {s.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ─── PROJETS EN VEDETTE ───────────────────────────────── */}
+      {/* ── PROJETS EN VEDETTE ───────────────────────────────── */}
       {projects.length > 0 && (
-        <section className="section bg-gray-50">
+        <section className="section border-t border-[#21262d]">
           <div className="container-page">
             <div className="flex items-end justify-between mb-10">
               <div>
-                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-                  Projets en vedette
-                </h2>
-                <p className="text-gray-500 text-sm">Notre sélection de réalisations récentes</p>
+                <p className="font-mono text-xs text-gray-600 uppercase tracking-widest mb-1"># featured</p>
+                <h2 className="font-mono text-2xl font-bold text-gray-100">Projets récents</h2>
               </div>
-              <Link href="/portfolio" className="btn-outline hidden sm:inline-flex text-sm">
-                Tout voir
+              <Link href="/portfolio" className="btn-outline text-xs py-1.5 px-3 hidden sm:inline-flex">
+                ./all <ArrowRight size={12} />
               </Link>
             </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project) => (
-                <ProjectCard key={project.id} project={project} />
-              ))}
-            </div>
-
-            <div className="text-center mt-10 sm:hidden">
-              <Link href="/portfolio" className="btn-outline">
-                Voir tout le portfolio
-              </Link>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {projects.map((p) => <ProjectCard key={p.id} project={p} />)}
             </div>
           </div>
         </section>
       )}
 
-      {/* ─── CTA FINAL ────────────────────────────────────────── */}
-      <section className="section bg-gradient-to-br from-studios-600 to-studios-800 text-white">
+      {/* ── CTA ──────────────────────────────────────────────── */}
+      <section className="section border-t border-[#21262d] bg-[#0d1117]">
         <div className="container-page text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4">
+          <div className="terminal-badge mb-6 mx-auto w-fit">
+            <span className="text-studios-400">$</span>
+            <span className="text-gray-300">git commit -m "start new project"</span>
+          </div>
+          <h2 className="font-mono text-3xl font-bold text-gray-100 mb-4">
             Un projet en tête ?
           </h2>
-          <p className="text-studios-200 mb-8 max-w-lg mx-auto">
-            Parlons-en. Nous répondons dans les 24 heures et proposons systématiquement
-            un premier échange gratuit.
+          <p className="font-mono text-sm text-gray-500 mb-8">
+            // Premier échange gratuit · Réponse sous 24h
           </p>
-          <a href="mailto:contact@cupacode-studios.com" className="inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold bg-white text-studios-700 hover:bg-studios-50 transition-colors">
-            Démarrer la conversation
-            <ArrowRight size={16} />
+          <a href="mailto:contact@cupacode-studios.com"
+            className="btn-studios">
+            ./contact <ArrowRight size={14} />
           </a>
         </div>
       </section>
