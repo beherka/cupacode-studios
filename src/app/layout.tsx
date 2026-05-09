@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import './globals.css';
+import { CookieBanner } from '@/components/CookieBanner';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://cupacode-studios.com'),
@@ -112,13 +113,21 @@ function Footer() {
             </a>
           </div>
         </div>
-        <div className="border-t border-[#21262d] pt-6 flex items-center justify-between flex-wrap gap-2">
+        <div className="border-t border-[#21262d] pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 flex-wrap">
           <p className="text-xs font-mono text-gray-600">© {year} Cupacode Studios</p>
-          <p className="text-xs font-mono text-gray-600">
-            <span className="text-gray-600">powered by </span>
+          <div className="flex items-center gap-4 flex-wrap">
+            <Link href="/mentions-legales" className="text-xs font-mono text-gray-600 hover:text-gray-400 transition-colors">
+              Mentions légales
+            </Link>
+            <Link href="/politique-confidentialite" className="text-xs font-mono text-gray-600 hover:text-gray-400 transition-colors">
+              Confidentialité
+            </Link>
+            <span className="text-xs font-mono text-gray-700">·</span>
             <a href="https://cupadev.com" target="_blank" rel="noopener noreferrer"
-              className="text-cupadev-400 hover:text-cupadev-300 transition-colors">cupadev.com</a>
-          </p>
+              className="text-xs font-mono text-cupadev-400 hover:text-cupadev-300 transition-colors">
+              powered by cupadev.com
+            </a>
+          </div>
         </div>
       </div>
     </footer>
@@ -140,6 +149,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CookieBanner />
       </body>
     </html>
   );
