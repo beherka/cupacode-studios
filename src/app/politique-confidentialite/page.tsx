@@ -20,7 +20,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Responsable du traitement</h2>
-            <p>
+            <p className="text-gray-400">
               <strong className="text-gray-200">Cupacode Studios</strong> — contact :{' '}
               <a href="mailto:contact@cupacode-studios.com" className="text-cupadev-400 hover:text-cupadev-300">
                 contact@cupacode-studios.com
@@ -30,7 +30,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Données collectées</h2>
-            <p>
+            <p className="text-gray-400">
               Ce site collecte uniquement les données strictement nécessaires à son fonctionnement :
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
@@ -39,13 +39,13 @@ export default function PolitiqueConfidentialitePage() {
                 "Adresse e-mail si vous nous contactez directement par e-mail",
                 "Logs techniques d'accès (adresse IP, navigateur) conservés 30 jours maximum",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
+                <li key={item} className="flex items-start gap-2 text-gray-400">
                   <span className="text-cupadev-400 shrink-0">+</span>
-                  <span>{item}</span>
+                  <span className="text-gray-400">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-3">
+            <p className="mt-3 text-gray-400">
               Nous ne collectons <strong className="text-gray-200">aucune donnée publicitaire</strong>, aucun profil
               comportemental et n'utilisons aucun outil de tracking tiers (Google Analytics, Facebook Pixel, etc.).
             </p>
@@ -53,7 +53,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Cookies</h2>
-            <p>
+            <p className="text-gray-400">
               Ce site utilise uniquement :
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
@@ -61,20 +61,20 @@ export default function PolitiqueConfidentialitePage() {
                 "Cookies de session Supabase (authentification admin — durée de session)",
                 "Cookie de consentement (mémorisation de votre choix — 1 an, localStorage)",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
+                <li key={item} className="flex items-start gap-2 text-gray-400">
                   <span className="text-studios-400 shrink-0">+</span>
-                  <span>{item}</span>
+                  <span className="text-gray-400">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-3">
+            <p className="mt-3 text-gray-400">
               Aucun cookie publicitaire ou de mesure d'audience n'est déposé sur votre appareil.
             </p>
           </section>
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Base légale</h2>
-            <p>
+            <p className="text-gray-400">
               Le traitement est fondé sur l'<strong className="text-gray-200">intérêt légitime</strong> (sécurité et
               fonctionnement du site) et le <strong className="text-gray-200">consentement</strong> pour les cookies
               non essentiels (art. 6 RGPD).
@@ -83,7 +83,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Vos droits</h2>
-            <p>
+            <p className="text-gray-400">
               Conformément au RGPD (Règlement UE 2016/679) et à la loi Informatique et Libertés, vous disposez des
               droits suivants :
             </p>
@@ -96,13 +96,13 @@ export default function PolitiqueConfidentialitePage() {
                 "Droit à la portabilité",
                 "Droit d'introduire une réclamation auprès de la CNIL (cnil.fr)",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
+                <li key={item} className="flex items-start gap-2 text-gray-400">
                   <span className="text-cupadev-400 shrink-0">+</span>
-                  <span>{item}</span>
+                  <span className="text-gray-400">{item}</span>
                 </li>
               ))}
             </ul>
-            <p className="mt-3">
+            <p className="mt-3 text-gray-400">
               Pour exercer vos droits :{' '}
               <a href="mailto:contact@cupacode-studios.com" className="text-cupadev-400 hover:text-cupadev-300">
                 contact@cupacode-studios.com
@@ -112,7 +112,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Sous-traitants</h2>
-            <p>
+            <p className="text-gray-400">
               Nous utilisons les services suivants, conformes RGPD :
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
@@ -121,9 +121,9 @@ export default function PolitiqueConfidentialitePage() {
                 "CUPADEV (hébergement) — cupadev.com",
                 "Google Fonts (polices web, via preconnect) — aucun cookie déposé",
               ].map((item) => (
-                <li key={item} className="flex items-start gap-2">
+                <li key={item} className="flex items-start gap-2 text-gray-400">
                   <span className="text-gray-600 shrink-0">→</span>
-                  <span>{item}</span>
+                  <span className="text-gray-400">{item}</span>
                 </li>
               ))}
             </ul>
@@ -131,7 +131,7 @@ export default function PolitiqueConfidentialitePage() {
 
           <section>
             <h2 className="font-mono text-xs text-gray-500 uppercase tracking-widest mb-3">Durée de conservation</h2>
-            <p>
+            <p className="text-gray-400">
               Les données de contact (e-mails reçus) sont conservées 3 ans maximum. Les logs techniques sont purgés
               automatiquement après 30 jours.
             </p>
