@@ -160,6 +160,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           .hover\:text-gray-400:hover{color:rgb(180 188 200)!important}
           .btn-outline{color:rgb(180 188 200)!important}
           .btn-outline:hover{color:#22d3ee!important}
+          .btn-studios{color:#080b10!important}
+          .btn-studios:hover{color:#080b10!important}
+          .btn-cupadev{color:#080b10!important}
+          .btn-cupadev:hover{color:#080b10!important}
           .terminal-badge{color:#22d3ee!important}
         ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
