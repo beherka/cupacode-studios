@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Eye, EyeOff } from 'lucide-react';
-import { createClient } from '@/lib/supabase/client';
-import { cn } from '@/lib/utils';
+import { createClient } from '../../lib/supabase/client';
+import { cn } from '../../lib/utils';
 
 export default function LoginPage() {
   const router   = useRouter();

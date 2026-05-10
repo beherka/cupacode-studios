@@ -4,10 +4,10 @@ import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { Upload, X, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase/client';
-import { cn } from '@/lib/utils';
-import type { Project, ProjectInsert, ProjectCategory, ProjectBrand } from '@/lib/supabase/types';
-import { CATEGORY_LABELS, BRAND_LABELS } from '@/lib/supabase/types';
+import { createClient } from '../../../lib/supabase/client';
+import { cn } from '../../../lib/utils';
+import type { Project, ProjectInsert, ProjectCategory, ProjectBrand } from '../../../lib/supabase/types';
+import { CATEGORY_LABELS, BRAND_LABELS } from '../../../lib/supabase/types';
 
 interface ProjectFormProps {
   mode: 'create' | 'edit';

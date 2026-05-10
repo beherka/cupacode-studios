@@ -35,9 +35,9 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
               {[
-                'Données de session (authentification administrateur via Supabase Auth)',
-                'Adresse e-mail si vous nous contactez directement par e-mail',
-                'Logs techniques d'accès (adresse IP, navigateur) conservés 30 jours maximum',
+                "Données de session (authentification administrateur via Supabase Auth)",
+                "Adresse e-mail si vous nous contactez directement par e-mail",
+                "Logs techniques d'accès (adresse IP, navigateur) conservés 30 jours maximum",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="text-cupadev-400 shrink-0">+</span>
@@ -58,8 +58,8 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
               {[
-                'Cookies de session Supabase (authentification admin — durée de session)',
-                'Cookie de consentement (mémorisation de votre choix — 1 an, localStorage)',
+                "Cookies de session Supabase (authentification admin — durée de session)",
+                "Cookie de consentement (mémorisation de votre choix — 1 an, localStorage)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="text-studios-400 shrink-0">+</span>
@@ -89,12 +89,12 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
               {[
-                'Droit d'accès à vos données',
-                'Droit de rectification',
-                'Droit à l'effacement (droit à l'oubli)',
-                'Droit d'opposition au traitement',
-                'Droit à la portabilité',
-                'Droit d'introduire une réclamation auprès de la CNIL (cnil.fr)',
+                "Droit d'accès à vos données",
+                "Droit de rectification",
+                "Droit à l'effacement (droit à l'oubli)",
+                "Droit d'opposition au traitement",
+                "Droit à la portabilité",
+                "Droit d'introduire une réclamation auprès de la CNIL (cnil.fr)",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="text-cupadev-400 shrink-0">+</span>
@@ -117,9 +117,9 @@ export default function PolitiqueConfidentialitePage() {
             </p>
             <ul className="mt-3 space-y-1.5 font-mono text-xs">
               {[
-                'Supabase (authentification, base de données, stockage) — serveurs EU',
-                'CUPADEV (hébergement) — cupadev.com',
-                'Google Fonts (polices web, via preconnect) — aucun cookie déposé',
+                "Supabase (authentification, base de données, stockage) — serveurs EU",
+                "CUPADEV (hébergement) — cupadev.com",
+                "Google Fonts (polices web, via preconnect) — aucun cookie déposé",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="text-gray-600 shrink-0">→</span>
