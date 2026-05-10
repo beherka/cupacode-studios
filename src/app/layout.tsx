@@ -147,6 +147,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           .text-gray-500{color:rgb(140 150 165)!important}
           .text-gray-600{color:rgb(100 112 128)!important}
           .text-gray-700{color:rgb(72 84 100)!important}
+          .text-cupadev-400{color:#22d3ee!important}
+          .text-cupadev-300{color:#67e8f9!important}
+          .text-studios-400{color:#4ade80!important}
+          .text-studios-300{color:#86efac!important}
+          .text-studios-500{color:#22c55e!important}
+          .hover\:text-cupadev-400:hover{color:#22d3ee!important}
+          .hover\:text-cupadev-300:hover{color:#67e8f9!important}
+          .hover\:text-studios-400:hover{color:#4ade80!important}
+          .hover\:text-studios-300:hover{color:#86efac!important}
         ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
