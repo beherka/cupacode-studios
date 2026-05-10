@@ -13,8 +13,6 @@
 
   body {
     @apply antialiased;
-    background-color: #080b10;
-    color: rgb(243, 244, 246);
     font-family: var(--font-sans);
   }
 
