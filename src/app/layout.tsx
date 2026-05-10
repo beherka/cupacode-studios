@@ -139,14 +139,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr" style={{ backgroundColor: '#080b10', color: '#f3f4f6' }}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: `
-          html,body{background-color:#080b10!important;color:#f3f4f6!important}
-          .text-gray-100{color:rgb(243 244 246)!important}
-          .text-gray-200{color:rgb(229 231 235)!important}
-          .text-gray-300{color:rgb(209 213 219)!important}
-          .text-gray-400{color:rgb(156 163 175)!important}
-          .text-gray-500{color:rgb(107 114 128)!important}
-          .text-gray-600{color:rgb(75 85 99)!important}
-          .text-gray-700{color:rgb(55 65 81)!important}
+          html,body{background-color:#080b10!important;color:#f9fafb!important}
+          .text-gray-100{color:rgb(249 250 251)!important}
+          .text-gray-200{color:rgb(240 242 246)!important}
+          .text-gray-300{color:rgb(220 225 232)!important}
+          .text-gray-400{color:rgb(180 188 200)!important}
+          .text-gray-500{color:rgb(140 150 165)!important}
+          .text-gray-600{color:rgb(100 112 128)!important}
+          .text-gray-700{color:rgb(72 84 100)!important}
         ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
