@@ -138,6 +138,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" style={{ backgroundColor: '#080b10', color: '#f3f4f6' }}>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: `
+          html,body{background-color:#080b10!important;color:#f3f4f6!important}
+          .text-gray-100{color:rgb(243 244 246)!important}
+          .text-gray-200{color:rgb(229 231 235)!important}
+          .text-gray-300{color:rgb(209 213 219)!important}
+          .text-gray-400{color:rgb(156 163 175)!important}
+          .text-gray-500{color:rgb(107 114 128)!important}
+          .text-gray-600{color:rgb(75 85 99)!important}
+          .text-gray-700{color:rgb(55 65 81)!important}
+        ` }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
