@@ -8,8 +8,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
-import { getStorageUrl } from '@/lib/utils';
+import { cn, getStorageUrl } from '../lib/utils';
 
 interface ScreenshotGalleryProps {
   screenshots: string[];  // chemins Storage (sans l'URL de base)

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Terminal, Cpu, Gamepad2, GitBranch } from 'lucide-react';
-import { createClient } from '@/lib/supabase/server';
-import { ProjectCard } from '@/components/ProjectCard';
-import type { Project } from '@/lib/supabase/types';
+import { createClient } from '../lib/supabase/server';
+import { ProjectCard } from '../components/ProjectCard';
+import type { Project } from '../lib/supabase/types';
 
 export const metadata: Metadata = {
   title: 'Cupacode Studios — Studio de développement web & mobile en France',

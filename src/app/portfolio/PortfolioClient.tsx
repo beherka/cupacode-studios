@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { ProjectCard } from '@/components/ProjectCard';
-import type { Project, ProjectCategory, ProjectBrand } from '@/lib/supabase/types';
-import { CATEGORY_LABELS, BRAND_LABELS } from '@/lib/supabase/types';
-import { cn } from '@/lib/utils';
+import { ProjectCard } from '../../components/ProjectCard';
+import type { Project, ProjectCategory, ProjectBrand } from '../../lib/supabase/types';
+import { CATEGORY_LABELS, BRAND_LABELS } from '../../lib/supabase/types';
+import { cn } from '../../lib/utils';
 
 interface PortfolioClientProps { projects: Project[]; }
 
