@@ -41,11 +41,24 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   const descHtml = p.description_long
     .split('\n\n')
-    .map((para) =>
-      para.startsWith('**') && para.endsWith('**')
-        ? `<h3 class="font-mono text-sm font-bold text-cupadev-400 mt-5 mb-2">${para.slice(2, -2)}</h3>`
-        : `<p class="text-sm text-gray-400 leading-relaxed mb-3">${para.replace(/\n/g, '<br/>')}</p>`
-    ).join('');
+    .map((para) => {
+      const trimmed = para.trim();
+      // Titre de section **Texte :**
+      if (trimmed.startsWith('**') && trimmed.endsWith('**'))
+        return `<h3 class="font-mono text-sm font-bold text-cupadev-400 mt-6 mb-3">${trimmed.slice(2, -2)}</h3>`;
+      // Bloc de lignes bullet (- item)
+      if (trimmed.split('\n').every((l) => l.trimStart().startsWith('- '))) {
+        const items = trimmed.split('\n').map((l) =>
+          `<li class="flex items-start gap-2 text-gray-400"><span class="text-cupadev-400 shrink-0 mt-0.5">+</span><span class="text-gray-400">${l.replace(/^-\s+/, '').replace(/\*\*(.+?)\*\*/g, '<strong class="text-gray-200">$1</strong>')}</span></li>`
+        ).join('');
+        return `<ul class="space-y-1.5 font-mono text-xs mb-4">${items}</ul>`;
+      }
+      // Paragraphe normal avec bold inline
+      const html = trimmed
+        .replace(/\n/g, '<br/>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong class="text-gray-200">$1</strong>');
+      return `<p class="text-sm text-gray-400 leading-relaxed mb-3">${html}</p>`;
+    }).join('');
 
   return (
     <div className="section">
@@ -86,11 +99,23 @@ export default async function ProjectDetailPage({ params }: Props) {
           )}
         </header>
 
-        {/* Galerie */}
-        {p.screenshots.length > 0 && (
+        {/* Galerie / miniature */}
+        {p.screenshots.length > 0 ? (
           <section className="mb-10">
             <p className="font-mono text-xs text-gray-600 mb-4"># screenshots</p>
             <ScreenshotGallery screenshots={p.screenshots} projectTitle={p.title} />
+          </section>
+        ) : (
+          <section className="mb-10">
+            {/* Miniature statique : déposer /public/projects/[slug].jpg */}
+            <div className="relative w-full h-64 rounded-lg overflow-hidden bg-[#161b22] border border-[#21262d]">
+              <img
+                src={`/projects/${p.slug}.jpg`}
+                alt={p.title}
+                className="w-full h-full object-cover opacity-80"
+                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+              />
+            </div>
           </section>
         )}
 

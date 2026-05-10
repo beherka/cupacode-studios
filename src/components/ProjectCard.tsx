@@ -38,11 +38,20 @@ export function ProjectCard({ project, className }: ProjectCardProps) {
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         ) : (
-          <div className="flex h-full items-center justify-center">
-            <span className="font-mono text-4xl font-bold text-[#30363d] select-none">
-              {project.title.charAt(0).toUpperCase()}
-            </span>
-          </div>
+          <>
+            {/* Miniature statique : déposer /public/projects/[slug].jpg */}
+            <img
+              src={`/projects/${project.slug}.jpg`}
+              alt={`Capture de ${project.title}`}
+              className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+              onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+            />
+            <div className="flex h-full items-center justify-center absolute inset-0 -z-10">
+              <span className="font-mono text-4xl font-bold text-[#30363d] select-none">
+                {project.title.charAt(0).toUpperCase()}
+              </span>
+            </div>
+          </>
         )}
         {project.featured && (
           <div className="absolute top-2 right-2">
