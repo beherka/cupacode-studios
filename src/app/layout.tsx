@@ -136,7 +136,7 @@ function Footer() {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className="bg-[#080b10] text-gray-100">
+    <html lang="fr" style={{ backgroundColor: '#080b10', color: '#f3f4f6' }}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -145,7 +145,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#080b10] text-gray-100">
+      <body className="min-h-screen flex flex-col" style={{ backgroundColor: '#080b10', color: '#f3f4f6' }}>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
