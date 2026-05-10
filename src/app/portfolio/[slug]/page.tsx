@@ -109,11 +109,11 @@ export default async function ProjectDetailPage({ params }: Props) {
           <section className="mb-10">
             {/* Miniature statique : déposer /public/projects/[slug].jpg */}
             <div className="relative w-full h-64 rounded-lg overflow-hidden bg-[#161b22] border border-[#21262d]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={`/projects/${p.slug}.jpg`}
                 alt={p.title}
                 className="w-full h-full object-cover opacity-80"
-                onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
               />
             </div>
           </section>
